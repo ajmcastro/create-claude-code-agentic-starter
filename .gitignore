@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.env
+.env.*
+
+# Claude Code: personal settings and local-only agent memory stay out of git
+.claude/settings.local.json
+.claude/agent-memory-local/
+CLAUDE.local.md
