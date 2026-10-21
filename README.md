@@ -63,20 +63,38 @@ The application itself is deliberately small — `missionlog`, a Python CLI that
 
 ## Getting started
 
-Requirements: Python 3.11+, [Claude Code](https://code.claude.com/docs/en/overview), and optionally `ruff` (the lint hook skips silently if it is missing).
+Requirements: [uv](https://docs.astral.sh/uv/), [Claude Code](https://code.claude.com/docs/en/overview), and `make`. The setup command installs Python 3.11 and the project environment; you do not need to install Python separately.
+
+If uv is not installed yet, install it using the instructions for your platform:
+
+**macOS and Linux**
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+**Windows (PowerShell)**
+
+```powershell
+irm https://astral.sh/uv/install.ps1 | iex
+```
+
+See the [official uv installation guide](https://docs.astral.sh/uv/getting-started/installation/) for other installation options. After installing uv, open a new terminal and continue:
 
 ```bash
 git clone https://github.com/<you>/claude-code-agentic-starter.git
 cd claude-code-agentic-starter
-python -m venv .venv && source .venv/bin/activate
-pip install -e ".[dev]"
-pytest
-python -m missionlog data/sample_flight.csv
+make setup
+make test
+make run
 ```
 
-Then start Claude Code in the repo:
+`make setup` installs Python 3.11 with uv, pins it for this project in `.python-version`, and syncs the project and development dependencies into `.venv`. Run `make help` to see available commands. You can also pass a different CSV to the CLI with `make run ARGS="path/to/flight.csv"`.
+
+Activate the environment before starting Claude Code so its lint-on-edit hook can find the project-installed Ruff:
 
 ```bash
+source .venv/bin/activate
 claude
 ```
 

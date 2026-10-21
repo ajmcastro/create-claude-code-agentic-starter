@@ -4,10 +4,11 @@ A Python CLI that reads flight telemetry CSVs and prints a flight summary. Small
 
 ## Commands
 
-- Install: `pip install -e ".[dev]"`
-- Tests: `pytest -q`
-- Lint/format: `ruff check . && ruff format .`
-- Run: `python -m missionlog data/sample_flight.csv`
+- Setup Python and the development environment: `make setup`
+- Tests: `make test`
+- Lint: `make lint`
+- Format: `make format`
+- Run: `make run`
 
 ## Layout
 
@@ -20,7 +21,7 @@ A Python CLI that reads flight telemetry CSVs and prints a flight summary. Small
 
 - Type hints on every public function. Standard library only in `src/` unless an ADR says otherwise.
 - Metrics are pure functions registered in `METRICS` in `metrics.py`. Use the `add-metric` skill to add one.
-- Every behaviour change ships with a test. Run `pytest -q` before saying a task is done.
+- Every behaviour change ships with a test. Run `make test` before saying a task is done.
 - Significant design choices get an ADR in `docs/adr/` (use the `write-adr` skill).
 
 ## Working agreements
